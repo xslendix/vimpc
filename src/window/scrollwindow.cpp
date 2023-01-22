@@ -64,7 +64,8 @@ void ScrollWindow::Print(uint32_t line) const
    }
 
    std::string output = WindowBuffer().PrintString(currentLine);
-
+   if (output.length() > Columns()-1)
+      output = output.substr(0, Columns()-1);
 
    if (settings_.Get(Setting::ColourEnabled) == true)
    {
